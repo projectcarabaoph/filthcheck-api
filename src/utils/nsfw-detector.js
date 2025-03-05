@@ -6,7 +6,8 @@ dotenv.config()
 
 // env.localModelPath = process.cwd() + "/src/models";
 // env.allowLocalModels = true;
-// env.allowRemoteModels = false;
+env.allowRemoteModels = true;
+env.cacheDir = './.cache';
 
 const nsfwDetector = async (image) => {
 
