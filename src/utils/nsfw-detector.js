@@ -4,19 +4,21 @@ import dotenv from 'dotenv'
 
 dotenv.config()
 
+const { HUGGINGFACE_MODEL, HUGGINGFACE_CACHED_DIR } = process.env
+
+
 // env.localModelPath = process.cwd() + "/src/models";
 // env.allowLocalModels = true;
 env.allowRemoteModels = true;
-env.cacheDir = './.cache';
+env.cacheDir = HUGGINGFACE_CACHED_DIR;
 
 const nsfwDetector = async (image) => {
 
     try {
 
-        const { HUGGINGFACE_MODEL } = process.env
 
         const classifier = await pipeline('image-classification', HUGGINGFACE_MODEL, {
-            dtype: 'fp16'
+            dtype: 'q4'
         });
 
         const response = await classifier(image);
