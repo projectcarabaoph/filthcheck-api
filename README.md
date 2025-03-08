@@ -33,14 +33,15 @@ FilthCheck is a simple API for detecting Not Safe For Work (NSFW) image content.
 #### Response
 ```json
 {
+  "status": 200,
   "data": [
     {
       "label": "nsfw",
-      "score": 0.7739658951759338
+      "score": 0.7899982333183289
     },
     {
       "label": "sfw",
-      "score": 0.22603408992290497
+      "score": 0.21000179648399353
     }
   ]
 }
