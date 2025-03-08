@@ -9,9 +9,18 @@ export const detectImageService = async (request: Request, response: Response) =
 
     try {
 
-        const parsedData = detectImageSchema.parse(request.body);
+        const { imageURL } = detectImageSchema.parse(request.body);
 
-        const data = await nsfwDetector(parsedData?.imageURL);
+        const headResponse = await fetch(imageURL, { method: "HEAD" });
+
+        // 2️⃣ Get Content-Type from headers
+        const contentType = headResponse.headers.get("content-type");
+        if (!contentType || !contentType.startsWith("image/")) {
+
+            throw new Error(`Not an image. Content-Type: ${contentType}`);
+        }
+
+        const data = await nsfwDetector(imageURL);
 
         return { status: 200, data };
 
