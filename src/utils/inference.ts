@@ -3,7 +3,7 @@ import * as ort from 'onnxruntime-node';
 
 const inference = async (inputTensor: ort.Tensor) => {
 
-    const modelPath = path.join(process.cwd(), "models", "model_q4.onnx");
+    const modelPath = path.join(process.cwd(), "src", "models", "model_q4.onnx");
 
     const session = await ort.InferenceSession.create(modelPath);
 
