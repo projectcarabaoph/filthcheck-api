@@ -1,5 +1,5 @@
 import express from 'express';
-import { detectImageController } from '../controllers/detect-controllers.js';
+import { detectImageController } from '../controllers/detect-controllers';
 
 const router = express.Router();
 

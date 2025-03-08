@@ -1,5 +1,5 @@
 
-const nsfwDetector = async (image) => {
+const nsfwDetector = async (image: string) => {
 
 }
 
