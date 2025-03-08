@@ -4,7 +4,6 @@ import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
-
 import detectRoutes from './routes/detect-routes'
 
 dotenv.config()
