@@ -1,9 +1,9 @@
 import preprocessImage from "./preprocess-image";
 
-const preprocessImageUrl = async (imageUrl: string) => {
+const preprocessImageUrl = async (imageURL: string) => {
     try {
 
-        const response = await fetch(imageUrl);
+        const response = await fetch(imageURL);
         if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
 
         // 2️⃣ Read image as buffer
