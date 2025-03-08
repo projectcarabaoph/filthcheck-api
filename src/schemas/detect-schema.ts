@@ -5,3 +5,5 @@ export const detectImageSchema = z.object({
         .string({ required_error: "Missing required field: imageURL." })
         .url({ message: "Invalid image URL." })
 })
+
+export type IDetectImageSchema = z.infer<typeof detectImageSchema>

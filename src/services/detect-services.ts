@@ -1,9 +1,11 @@
+
+import { Request, Response } from 'express';
 import * as z from 'zod'
 import nsfwDetector from '../utils/nsfw-detector.js';
 import { detectImageSchema } from '../schemas/detect-schema.js';
 
 
-export const detectImageService = async (request, response) => {
+export const detectImageService = async (request: Request, response: Response) => {
 
     try {
 

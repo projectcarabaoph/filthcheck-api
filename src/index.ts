@@ -1,5 +1,5 @@
 import express from 'express'
-import cors from 'cors'
+import cors, { CorsOptions } from 'cors'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
@@ -11,8 +11,8 @@ dotenv.config()
 
 const { NODE_PORT, NODE_PUBLIC_DEV_BASE_URL } = process.env
 
-const corsOptions = {
-    origin: [NODE_PUBLIC_DEV_BASE_URL],
+const corsOptions: CorsOptions = {
+    origin: [NODE_PUBLIC_DEV_BASE_URL as string],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"]

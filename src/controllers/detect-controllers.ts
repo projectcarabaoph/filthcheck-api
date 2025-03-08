@@ -1,6 +1,7 @@
+import { Request, Response } from "express";
 import { detectImageService } from "../services/detect-services.js";
 
-export const detectImageController = async (request, response) => {
+export const detectImageController = async (request: Request, response: Response) => {
     try {
 
         const result = await detectImageService(request, response);
