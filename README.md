@@ -5,7 +5,7 @@ FilthCheck is a simple API for detecting Not Safe For Work (NSFW) image content.
 ## Features
 - Detects NSFW content in images
 - Lightweight and easy to use API
-- Fast inference using Hugging Face transformers
+- Fast inference using ONNX Runtime Node
 - Uses Supabase for storage and authentication
 - Built with Node.js, Express.js, and TypeScript
 
@@ -33,7 +33,6 @@ FilthCheck is a simple API for detecting Not Safe For Work (NSFW) image content.
 #### Response
 ```json
 {
-  "status": 200,
   "data": [
     {
       "label": "nsfw",
