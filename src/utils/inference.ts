@@ -11,7 +11,7 @@ const inference = async (inputTensor: ort.Tensor) => {
     const results = await session.run({ [session.inputNames[0]]: inputTensor });
 
     // Extract logits
-    const logits = results.logits.data;
+    const logits = results.logits.data as Float32Array;
 
     return logits
 
