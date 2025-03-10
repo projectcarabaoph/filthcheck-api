@@ -39,6 +39,11 @@ app.get('/', (req, res) => {
 
 app.use('/api/detect', detectRoutes)
 
+app.use((req, res, next) => {
+    res.status(404).send('Page Not Found')
+});
+
+
 const port = NODE_PORT || 5000
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
