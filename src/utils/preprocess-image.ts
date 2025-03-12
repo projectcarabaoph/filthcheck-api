@@ -24,7 +24,7 @@ const preprocessImage = async (imageBuffer: Buffer) => {
         float32Data[i] = ((rawImage[i] / 255) - imageMean[channel]) / imageStd[channel];
     }
 
-    // 🛠 Ensure correct channel ordering: [1, 3, dimension, dimension]
+    //  Ensure correct channel ordering: [1, 3, dimension, dimension]
     const reshaped = new Float32Array(3 * dimension * dimension);
     for (let i = 0; i < dimension * dimension; i++) {
         reshaped[i] = float32Data[i * 3];       // R
