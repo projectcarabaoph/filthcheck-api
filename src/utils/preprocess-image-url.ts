@@ -6,11 +6,11 @@ const preprocessImageUrl = async (imageURL: string) => {
         const response = await fetch(imageURL);
         if (!response.ok) throw new Error(`Failed to fetch image: ${response.statusText}`);
 
-        // 2️⃣ Read image as buffer
+        //  Read image as buffer
         const arrayBuffer = await response.arrayBuffer();
         const imageBuffer = Buffer.from(arrayBuffer);
 
-        // 3️⃣ Process it using Sharp (resize, normalize, remove alpha)
+        //  Process it using Sharp (resize, normalize, remove alpha)
         return await preprocessImage(imageBuffer);
     } catch (error) {
 

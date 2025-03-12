@@ -13,7 +13,6 @@ export const detectImageService = async (request: Request, response: Response) =
 
         const headResponse = await fetch(imageURL, { method: "HEAD" });
 
-        // 2️⃣ Get Content-Type from headers
         const contentType = headResponse.headers.get("content-type");
         if (!contentType || !contentType.startsWith("image/")) {
 
