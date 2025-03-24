@@ -15,11 +15,11 @@ export const verifyApiToken = (token: string): JwtPayload | string | null => {
         return jwt.verify(token, JWT_SECRET as string);
     } catch (error) {
         if (error instanceof JsonWebTokenError) {
-            throw new Error(`Invalid API Key: ${error.message}`);
+            throw new Error(`Invalid API Key`);
         }
 
         if (error instanceof Error) {
-            throw new Error(`API Key Verification Error: ${error.message}`);
+            throw new Error(`API Key Verification Error`);
         }
     }
     return null;
