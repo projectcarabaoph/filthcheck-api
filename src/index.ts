@@ -33,10 +33,6 @@ app.use(morgan('common'));
 app.use(express.json());
 // app.use(limiter);
 
-app.get('/', (req, res) => {
-    res.send('Unauthorized')
-})
-
 app.use('/api/detect', detectRoutes)
 
 app.use((req, res, next) => {
