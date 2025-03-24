@@ -12,7 +12,7 @@ const { NODE_PORT, NODE_PUBLIC_DEV_BASE_URL } = process.env
 
 const corsOptions: CorsOptions = {
     origin: [NODE_PUBLIC_DEV_BASE_URL as string],
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["POST"],
     credentials: false,
     allowedHeaders: ["Content-Type", "X-FilthCheckAPI-Key"]
 }
