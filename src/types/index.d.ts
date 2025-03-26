@@ -7,7 +7,8 @@ type TApiKeys = {
     project_id: string,
     project_code: string,
     created_at: string,
-    updated_at: string
+    updated_at: string,
+    domains: string
 }
 
 
