@@ -31,6 +31,9 @@ app.use(helmet());
 app.use(cors(corsOptions));
 app.use(morgan('common'));
 app.use(express.json());
+
+app.set('trust proxy', true);
+
 app.use(limiter);
 
 app.use('/api/detect', detectRoutes)
