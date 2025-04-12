@@ -5,6 +5,6 @@ import { corsMiddleware } from '@/middlewares/cors-middleware';
 
 const router = express.Router();
 
-router.post('/image', apiMiddleware, corsMiddleware, detectImageController);
+router.post('/image', apiMiddleware, detectImageController);
 
 export default router
