@@ -32,9 +32,9 @@ app.use(cors(corsOptions));
 app.use(morgan('common'));
 app.use(express.json());
 
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
-app.use(limiter);
+// app.use(limiter);
 
 app.use('/api/detect', detectRoutes)
 
