@@ -5,6 +5,8 @@ import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 import detectRoutes from './routes/detect-routes'
+import { corsMiddleware } from './middlewares/cors-middleware'
+import apiMiddleware from './middlewares/api-middleware'
 
 dotenv.config()
 
@@ -35,6 +37,8 @@ app.use(express.json());
 // app.set('trust proxy', 1);
 
 // app.use(limiter);
+app.use(corsMiddleware)
+app.use(apiMiddleware)
 
 app.use('/api/detect', detectRoutes)
 
