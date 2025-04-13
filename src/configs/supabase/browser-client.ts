@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-import { clientKeys } from '@/utils/supabase/client-keys';
+import { clientKeys } from '../../utils/supabase/client-keys';
 
 
 export function browserClient() {

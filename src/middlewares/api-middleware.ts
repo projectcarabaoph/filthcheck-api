@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 
-import type { TApiKeys } from "@/types";
-import { verifyApiToken } from "@/utils/misc/verify-api-token";
-import { browserClient } from "@/configs/supabase/browser-client";
+import type { TApiKeys } from "../types";
+import { verifyApiToken } from "../utils/misc/verify-api-token";
+import { browserClient } from "../configs/supabase/browser-client";
 import { JwtPayload } from "jsonwebtoken";
 
 const apiMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
