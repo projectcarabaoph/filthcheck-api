@@ -5,7 +5,10 @@ const inference = async (inputTensor: ort.Tensor) => {
 
     const modelPath = path.join(process.cwd(), "src", "models", "model_q4.onnx");
 
-    const session = await ort.InferenceSession.create(modelPath);
+    const session = await ort.InferenceSession.create(modelPath, {
+        executionProviders: ['CPUExecutionProvider'],
+        enableCpuMemArena: true,
+    });
 
     // Run inference
     const results = await session.run({ [session.inputNames[0]]: inputTensor });
