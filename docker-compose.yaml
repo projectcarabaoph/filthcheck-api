@@ -1,0 +1,6 @@
+services:
+  app:
+    build: .               # Build using the Dockerfile in the current directory
+    image: filthcheck-api  # Optionally tag the built image with this name
+    ports:
+      - "14000:4000"
