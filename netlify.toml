@@ -1,8 +1,0 @@
-[build]
- node_bundler = "esbuild"
-  functions = "netlify/functions"
-[[redirects]]
-  force = true
-  from = "/v1/*"
-  status = 200
-  to = "/.netlify/functions/v1/:splat"
