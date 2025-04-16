@@ -7,10 +7,12 @@ import dotenv from 'dotenv'
 import detectRoutes from './routes/detect-routes'
 import { corsMiddleware } from './middlewares/cors-middleware'
 import apiMiddleware from './middlewares/api-middleware'
-
+import customCron from './utils/misc/custom-cron'
 dotenv.config()
 
 const { NODE_PORT, NODE_PUBLIC_DEV_BASE_URL } = process.env
+
+customCron.start()
 
 const corsOptions: CorsOptions = {
     origin: [NODE_PUBLIC_DEV_BASE_URL as string],
