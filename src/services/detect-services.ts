@@ -1,7 +1,7 @@
 
 import { Request, Response } from 'express';
 import * as z from 'zod'
-import nsfwDetector from '../utils/nsfw-detector.js';
+import nsfwDetector from '../utils/misc/nsfw-detector.js';
 import { detectImageSchema } from '../schemas/detect-schema';
 
 
