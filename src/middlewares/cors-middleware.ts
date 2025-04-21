@@ -9,7 +9,7 @@ export const corsMiddleware = async (req: Request, res: Response, next: NextFunc
         if (!origin) return next();
 
         const whitelistedDomains = req?.apiKey?.domains ? req?.apiKey?.domains.split(',') : []
-        const allowedDomains = { FRONTEND_URL, ...whitelistedDomains }
+        const allowedDomains = Array.from(new Set([FRONTEND_URL, ...whitelistedDomains]));
 
         if (!allowedDomains.includes(origin)) {
             throw new Error('Forbidden')
