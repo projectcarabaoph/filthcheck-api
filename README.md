@@ -3,7 +3,7 @@
 
 # FilthCheck
 
-FilthCheck is a simple API for detecting Not Safe For Work (NSFW) image content. It utilizes onnx models to analyze images and classify them as either safe or NSFW.
+FilthCheck is a simple API for detecting Not Safe For Work (NSFW) Nudity image content. It utilizes onnx models to analyze images and classify them as either safe or NSFW.
 
 ## Features
 - Detects NSFW content in images
