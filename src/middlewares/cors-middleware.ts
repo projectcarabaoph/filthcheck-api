@@ -1,12 +1,16 @@
 import { Request, Response, NextFunction } from "express";
 
+const { FRONTEND_URL } = process.env
+
 export const corsMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const origin = req.headers.origin;
 
         if (!origin) return next();
 
-        const allowedDomains = req?.apiKey?.domains ? req?.apiKey?.domains.split(',') : []
+        const whitelistedDomains = req?.apiKey?.domains ? req?.apiKey?.domains.split(',') : []
+        const allowedDomains = { FRONTEND_URL, ...whitelistedDomains }
+
         if (!allowedDomains.includes(origin)) {
             throw new Error('Forbidden')
         }
