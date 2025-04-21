@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { browserClient } from "@/configs/supabase/browser-client";
+import { browserClient } from "../configs/supabase/browser-client";
 
 const analyticsMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
@@ -10,15 +10,19 @@ const analyticsMiddleware = (req: Request, res: Response, next: NextFunction) =>
     res.on('finish', async () => {
         const duration = performance.now() - start
 
-        await supabase.from('analytics').insert({
-            profile_id: req.apiKey?.profile_id,
-            project_id: req.apiKey?.project_id,
-            path: req.path,
-            method: req.method,
-            status_code: res.statusCode,
-            response_time_ms: duration,
-            ip_address: req.ip
-        })
+        try {
+            await supabase.from('analytics').insert({
+                profile_id: req.apiKey?.profile_id,
+                project_id: req.apiKey?.project_id,
+                path: req.path,
+                method: req.method,
+                status_code: res.statusCode,
+                response_time_ms: duration,
+                ip_address: req.ip
+            })
+        } catch (error) {
+            console.error('Analytics insert failed:', error)
+        }
     })
 
     next()
