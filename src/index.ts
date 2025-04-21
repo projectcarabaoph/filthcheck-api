@@ -4,10 +4,15 @@ import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
+
 import detectRoutes from './routes/detect-routes'
+
 import { corsMiddleware } from './middlewares/cors-middleware'
 import apiMiddleware from './middlewares/api-middleware'
+import analyticsMiddleware from './middlewares/analytics-middleware'
+
 import customCron from './utils/misc/custom-cron'
+
 dotenv.config()
 
 const { NODE_PORT, NODE_PUBLIC_DEV_BASE_URL } = process.env
@@ -41,6 +46,7 @@ app.use(express.json());
 // app.use(limiter);
 app.use(apiMiddleware)
 app.use(corsMiddleware)
+app.use(analyticsMiddleware)
 
 app.use('/api/detect', detectRoutes)
 
