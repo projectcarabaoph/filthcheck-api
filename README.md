@@ -1,5 +1,5 @@
 
-![Screenshot 2025-04-03 214423](https://github.com/user-attachments/assets/461d1953-b0b0-403f-be40-e5be953e2299)
+![Screenshot 2025-04-21 122458](https://github.com/user-attachments/assets/5f1242c2-ec53-4030-a7eb-3a12a892422e)
 
 # FilthCheck
 
