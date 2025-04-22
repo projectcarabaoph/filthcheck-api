@@ -13,7 +13,7 @@ const analyticsMiddleware = (req: Request, res: Response, next: NextFunction) =>
         try {
             await supabase.from('analytics').insert({
                 profile_id: req.apiKey?.profile_id,
-                project_id: req.apiKey?.project_id,
+                project_code: req.apiKey?.project_code,
                 path: req.path,
                 method: req.method,
                 status_code: res.statusCode,
