@@ -35,7 +35,7 @@ const limiter = rateLimit({
 const app = express()
 
 const corsOptions: CorsOptions = {
-    origin: ['*'],
+    origin: '*',
     methods: ["POST"],
     credentials: false,
     allowedHeaders: ["Content-Type", "X-FilthCheckAPI-Key"]
