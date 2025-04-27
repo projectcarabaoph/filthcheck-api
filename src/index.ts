@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 
 import detectRoutes from './routes/detect-routes'
 
-import { corsMiddleware } from './middlewares/cors-middleware'
+import corsMiddleware from './middlewares/cors-middleware'
 import apiMiddleware from './middlewares/api-middleware'
 import analyticsMiddleware from './middlewares/analytics-middleware'
 
