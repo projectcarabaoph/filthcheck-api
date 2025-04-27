@@ -4,6 +4,8 @@ import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
 import dotenv from 'dotenv'
 
+import cors, { CorsOptions } from 'cors'
+
 import detectRoutes from './routes/detect-routes'
 
 import corsMiddleware from './middlewares/cors-middleware'
@@ -19,6 +21,9 @@ const { NODE_PORT } = process.env
 customCron.start()
 
 
+
+
+
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 100,
@@ -28,6 +33,15 @@ const limiter = rateLimit({
 });
 
 const app = express()
+
+const corsOptions: CorsOptions = {
+    origin: ['*'],
+    methods: ["POST"],
+    credentials: false,
+    allowedHeaders: ["Content-Type", "X-FilthCheckAPI-Key"]
+}
+
+app.use(cors(corsOptions));
 
 app.use(helmet());
 app.use(morgan('common'));
