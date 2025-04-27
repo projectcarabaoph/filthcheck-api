@@ -1,5 +1,4 @@
 import express from 'express'
-import cors, { CorsOptions } from 'cors'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
 import morgan from 'morgan'
@@ -15,16 +14,10 @@ import customCron from './utils/misc/custom-cron'
 
 dotenv.config()
 
-const { NODE_PORT, NODE_PUBLIC_DEV_BASE_URL } = process.env
+const { NODE_PORT } = process.env
 
 customCron.start()
 
-const corsOptions: CorsOptions = {
-    origin: [NODE_PUBLIC_DEV_BASE_URL as string],
-    methods: ["POST"],
-    credentials: false,
-    allowedHeaders: ["Content-Type", "X-FilthCheckAPI-Key"]
-}
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -37,11 +30,9 @@ const limiter = rateLimit({
 const app = express()
 
 app.use(helmet());
-app.use(cors(corsOptions));
 app.use(morgan('common'));
 app.use(express.json());
 
-// app.set('trust proxy', 1);
 
 app.use(limiter);
 app.use(apiMiddleware)
