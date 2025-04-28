@@ -9,24 +9,36 @@ const apiMiddleware = async (req: Request, res: Response, next: NextFunction): P
     try {
         const apiKey = req.header('X-FilthCheckAPI-Key');
 
-        if (!apiKey) throw new Error('Forbidden')
+        if (!apiKey) {
+            throw new Error('Forbidden');
+        }
 
-        const isValidKey = verifyApiToken(apiKey) as JwtPayload;
+        const tokenPayload = verifyApiToken(apiKey) as JwtPayload | null;
+        if (!tokenPayload?.id) {
+            throw new Error('Forbidden');
+        }
 
-        if (!isValidKey) throw new Error('Forbidden')
-
-        const supabase = browserClient()
+        const supabase = browserClient();
 
         const { data, error } = await supabase
             .from('api_keys')
             .select('*')
-            .eq('profile_id', isValidKey?.id)
-
+            .eq('profile_id', tokenPayload.id)
             .single<TApiKeys>();
 
-        if (error) throw new Error(error.message)
+        if (error) {
 
-        if (data) req.apiKey = data
+            if (error.code === 'PGRST116') {
+                throw new Error('Forbidden');
+            }
+            throw new Error(`Supabase error: ${error.message}`);
+        }
+
+        if (!data) {
+            throw new Error('Forbidden');
+        }
+
+        req.apiKey = data;
 
         next()
 
