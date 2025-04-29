@@ -48,7 +48,7 @@ app.use(morgan('common'));
 app.use(express.json());
 
 
-// app.use(limiter);
+app.use(limiter);
 app.use(apiMiddleware)
 app.use(corsMiddleware)
 app.use(analyticsMiddleware)
