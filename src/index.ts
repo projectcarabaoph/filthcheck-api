@@ -45,7 +45,10 @@ const corsOptions: CorsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(helmet());
+app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginResourcePolicy: false,
+}));
 app.use(morgan('common'));
 app.use(express.json());
 
