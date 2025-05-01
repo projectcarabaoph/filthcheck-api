@@ -34,7 +34,7 @@ const limiter = rateLimit({
 
 const app = express()
 
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
 const corsOptions: CorsOptions = {
     origin: '*',
@@ -53,7 +53,7 @@ app.use(morgan('common'));
 app.use(express.json());
 
 
-app.use(limiter);
+// app.use(limiter);
 app.use(apiMiddleware)
 app.use(corsMiddleware)
 app.use(analyticsMiddleware)
