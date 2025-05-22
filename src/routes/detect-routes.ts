@@ -3,6 +3,6 @@ import { detectImageController } from '../controllers/detect-controllers';
 
 const router = express.Router();
 
-router.post('/image', detectImageController);
+router.post('/', detectImageController);
 
 export default router
